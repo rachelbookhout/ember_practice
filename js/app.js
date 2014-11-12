@@ -6,7 +6,23 @@ App.Router.map(function() {
 
 App.IndexRoute = Ember.Route.extend({
   model: function() {
-    return [
+    return this.store.findAll('book');
+}
+});
+
+App.ApplicationAdapter = DS.FixtureAdapter.extend({
+
+});
+
+App.Book = DS.Model.extend({
+  title: DS.attr(),
+  author:DS.attr(),
+  review:DS.attr(),
+  rating:DS.attr('number'),
+  amazon_id:DS.attr()
+});
+
+App.Book.FIXTURES = [
   {
     id: 1,
     title: 'Mindstorms',
@@ -35,5 +51,3 @@ App.IndexRoute = Ember.Route.extend({
     genre: 3
   }
 ];
-}
-});
