@@ -16,10 +16,17 @@ App.ApplicationAdapter = DS.FixtureAdapter.extend({
 
 App.Book = DS.Model.extend({
   title: DS.attr(),
-  author:DS.attr(),
-  review:DS.attr(),
-  rating:DS.attr('number'),
-  amazon_id:DS.attr()
+  author: DS.attr(),
+  review: DS.attr(),
+  rating: DS.attr('number'),
+  amazon_id: DS.attr(),
+  genre: DS.belongsTo('genre'),
+  url: function() {
+    return "http://www.amazon.com/gp/product/"+this.get('amazon_id')+"/adamfortuna-20";
+  }.property('amazon_id'),
+  image: function() {
+    return "http://images.amazon.com/images/P/"+this.get('amazon_id')+".01.ZTZZZZZZ.jpg";
+  }.property('amazon_id')
 });
 
 App.Book.FIXTURES = [
