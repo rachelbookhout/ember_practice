@@ -1,13 +1,19 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-
+  this.resource('book', { path: '/books/:book_id'});
 });
 
 App.IndexRoute = Ember.Route.extend({
   model: function() {
     return this.store.findAll('book');
 }
+});
+
+App.BookRoute = Ember.Route.extend({
+  model: function(params){
+    return this.store.find('book', params.book_id);
+  }
 });
 
 App.ApplicationAdapter = DS.FixtureAdapter.extend({
