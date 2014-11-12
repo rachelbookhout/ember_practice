@@ -16,6 +16,9 @@
   </script>
 
   <script type="text/x-handlebars" id="index">
+    <ol class='breadcrumb'>
+      <li class='active'>Books</li>
+    </ol>
     <ul class = "list-unstyled">
     {{#each}}
       <li class = "row">
@@ -33,6 +36,10 @@
     </ul>
   </script>
 <script type="text/x-handlebars" data-template-name="book">
+<ol class = "breadcrumbs">
+<li> {{#link-to 'index'}}Books{{/link-to}} </li>
+<li class = 'active'>{{title}}</li>
+</ol>
 <div>
 <div class='col-sm-3'>
       <a {{bind-attr href='url'}} target='_blank'>
