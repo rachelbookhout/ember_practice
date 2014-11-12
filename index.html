@@ -8,16 +8,19 @@
   <link rel="stylesheet" href="css/bootstrap">
 </head>
 <body>
-  <script type="text/x-handlebars">
-    <h2>Welcome to Ember.js</h2>
-
+  <script type="text/x-handlebars" data-template-name = 'application'>
+  <div class = "container">
+    <h1> Reading List </h1>
     {{outlet}}
+  </div>
   </script>
 
   <script type="text/x-handlebars" id="index">
     <ul>
-    {{#each item in model}}
-      <li>{{item}}</li>
+    {{#each}}
+      <li class = "row">
+        {{title}}
+      </li>
     {{/each}}
     </ul>
   </script>
