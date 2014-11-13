@@ -1,6 +1,7 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
+  // put your routes here
   this.resource('book', { path: '/books/:book_id'});
 });
 
@@ -10,14 +11,21 @@ App.IndexRoute = Ember.Route.extend({
 }
 });
 
-App.BookRoute = Ember.Route.extend({
-  model: function(params){
-    return this.store.find('book', params.book_id);
-  }
+App.IndexController = Ember.Controller.extend({});
+
+App.BooksController = Ember.ArrayController.extend({
+  sortProperties: ['title']
 });
 
-App.ApplicationAdapter = DS.FixtureAdapter.extend({
 
+App.ApplicationAdapter = DS.FixtureAdapter.extend({
+});
+
+App.BookDetailsComponent = Ember.Component.extend({
+  classNameBindings: ['ratingClass'],
+  ratingClass: function() {
+    return "rating-" + this.get('book.rating');
+  }.property('book.rating')
 });
 
 App.Book = DS.Model.extend({
@@ -60,3 +68,7 @@ App.Book.FIXTURES = [
     amazon_id: '159184617X',
   }
 ];
+
+
+
+
