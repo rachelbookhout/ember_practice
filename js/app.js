@@ -4,6 +4,9 @@ App.Router.map(function() {
   // put your routes here
   this.resource('book', { path: '/books/:book_id'});
   this.resource('genre', { path: '/genres/:genre_id'});
+  this.resource('reviews', function(){
+    this.route('new');
+  });
 });
 
 App.IndexRoute = Ember.Route.extend({
