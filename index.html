@@ -12,7 +12,13 @@
   <div class = "container">
     <h1> Reading List </h1>
     {{outlet}}
-  </div>
+     <hr>
+      <div class='row'>
+        <p class='pull-right'>
+          {{#link-to 'reviews.new'}}New Review{{/link-to}}
+        </p>
+      </div>
+    </div>
   </script>
 
   <script type="text/x-handlebars" data-template-name="index">
@@ -136,7 +142,6 @@
       </form>
     </div>
 
-    {{book-details book=model}}
   </script>
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-v1.3.0.js"></script>

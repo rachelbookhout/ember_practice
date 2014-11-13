@@ -31,7 +31,21 @@ App.GenresController = Ember.ArrayController.extend({
   sortProperties: ['name']
 });
 
-
+App.ReviewsNewRoute = Ember.Route.extend({
+  model: function (){
+    return this.store.createRecord('book')
+  }
+});
+App.ReviewsNewRoute = Ember.Route.extend({
+  actions: {
+    createReview: function(){
+      var controller = this;
+      this.get('model').save().then(function(){
+        controller.transitionroRoute('index');
+      });
+    }
+  }
+});
 App.ApplicationAdapter = DS.FixtureAdapter.extend({
 });
 
