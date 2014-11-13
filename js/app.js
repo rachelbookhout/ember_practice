@@ -69,6 +69,24 @@ App.Book.FIXTURES = [
   }
 ];
 
+App.Genre = DS.Model.extend({
+   name: DS.attr(),
+   books: DS.hasMany('book')
+});
 
-
-
+App.Genre.FIXTURES = [
+{
+  id:1
+  name: 'Science Fiction'
+  books: [2]
+},
+{
+  id:2
+  name: 'Fiction'
+},
+{
+  id:3
+  name: 'Non-Fiction'
+  books: [1,3]
+}
+]
