@@ -25,18 +25,27 @@
         {{render 'books' books}}
       </div>
       <div class = 'col-sm-4'>
-       <h2> Genre </h2>
-    <ul class = 'list-unstyled'>
-    {{#each genres}}
-    <li>{{this.name}}</li>
-    {{/each}}
-    </ul>
+    {{render 'genres' genres}}
       </div>
     </div>
-
-
   </script>
 
+  <script type='text/x-handlebars' data-template-name="genres">
+     <h2>Genres</h2>
+    <ul class='list-unstyled'>
+      {{#each}}
+        <li>{{#link-to 'genre' this class = 'label label-primary'}}{{name}}{{/link-to}}</li>
+      {{/each}}
+    </ul>
+  </script>
+   <script type="text/x-handlebars" data-template-name="genre">
+    <ol class='breadcrumb'>
+      <li>{{#link-to 'index'}}Books{{/link-to}}</li>
+      <li class='active'>{{name}}</li>
+    </ol>
+
+    {{render 'books' books}}
+  </script>
   <script type="text/x-handlebars" data-template-name="books">
     <ul class="list-unstyled">
       {{#each}}
@@ -71,8 +80,8 @@
         <p>{{book.review}}</p>
       </div>
 
-      <span class = 'label label-primary'>{{book.genre.name}}</span>
-    </div>
+<span class = 'label label-primary'>{{#link-to 'genre' this class = 'label label-primary'}}{{name}}{{/link-to}}</span>
+</div>
   </script>
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-v1.3.0.js"></script>

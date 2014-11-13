@@ -3,6 +3,7 @@ App = Ember.Application.create();
 App.Router.map(function() {
   // put your routes here
   this.resource('book', { path: '/books/:book_id'});
+  this.resource('genre', { path: '/genres/:genre_id'});
 });
 
 App.IndexRoute = Ember.Route.extend({
@@ -22,6 +23,9 @@ App.IndexController = Ember.Controller.extend({});
 
 App.BooksController = Ember.ArrayController.extend({
   sortProperties: ['title']
+});
+App.GenresController = Ember.ArrayController.extend({
+  sortProperties: ['name']
 });
 
 
