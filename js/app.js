@@ -6,14 +6,16 @@ App.Router.map(function() {
 });
 
 App.IndexRoute = Ember.Route.extend({
-  return Ember.RSVP.hash({
-    books: this.store.findAll('book'),
-    genres.this.store.findAll('genre')
-  });
-},
-setupController: function(controller, model){
-  controller.set('model',model);
-}
+  model: function() {
+    return Ember.RSVP.hash({
+      books: this.store.findAll('book'),
+      genres: this.store.findAll('genre')
+    });
+  },
+  setupController: function(controller, model) {
+    controller.set('books', model.books);
+    controller.set('genres', model.genres);
+  }
 });
 
 App.IndexController = Ember.Controller.extend({});
